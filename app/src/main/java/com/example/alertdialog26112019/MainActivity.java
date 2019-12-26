@@ -37,10 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
                 // Single Choice
                 final String[] arrayNames = {"Mèo","Chó","Cá","Vịt","Gà"};
-                alert.setSingleChoiceItems(arrayNames, -1, new DialogInterface.OnClickListener() {
+                boolean[] arrayChecked = {true , false,false,false,false};
+
+                alert.setMultiChoiceItems(arrayNames, arrayChecked, new DialogInterface.OnMultiChoiceClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int position) {
-                        Toast.makeText(MainActivity.this, arrayNames[position], Toast.LENGTH_SHORT).show();
+                    public void onClick(DialogInterface dialog, int position, boolean isChecked) {
+                        if (isChecked){
+                            Toast.makeText(MainActivity.this, arrayNames[position] + " đã được chọn", Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(MainActivity.this, arrayNames[position] + " bỏ chọn", Toast.LENGTH_SHORT).show();
+                        }
                     }
                 });
 
