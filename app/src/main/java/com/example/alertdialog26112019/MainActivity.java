@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,22 +32,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
                 alert.setTitle("Thông báo!!");
-                alert.setMessage("Bạn muốn thoát ứng dụng không?");
                 alert.setIcon(R.drawable.ic_launcher_background);
                 alert.setCancelable(false);
 
-                alert.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                // Single Choice
+                final String[] arrayNames = {"Mèo","Chó","Cá","Vịt","Gà"};
+                alert.setSingleChoiceItems(arrayNames, -1, new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
+                    public void onClick(DialogInterface dialog, int position) {
+                        Toast.makeText(MainActivity.this, arrayNames[position], Toast.LENGTH_SHORT).show();
                     }
                 });
-                alert.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                });
+
                 alert.show();
             }
         });
