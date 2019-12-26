@@ -7,5 +7,5 @@ public interface OrderBuilder {
    OrderBuilder orderNurger(String burger);
    OrderBuilder orderCoffee(String coffee);
    OrderBuilder orderFrenchfires(String frenchfires);
-
+   FastFood build();
 }

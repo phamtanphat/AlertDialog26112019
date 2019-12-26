@@ -36,4 +36,9 @@ public class FastFoodBuilder implements OrderBuilder{
         this.frenchfires = frenchfires;
         return this;
     }
+    @Override
+    public FastFood build() {
+        return new FastFood(sandwich,mexican,burger,coffee,frenchfires);
+    }
+
 }
